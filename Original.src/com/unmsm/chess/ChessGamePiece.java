@@ -286,6 +286,7 @@ public abstract class ChessGamePiece {
 
         ArrayList<String> moves = new ArrayList<String>();
         int count = 0;
+
         if (!isPieceOnScreen()) {
             return moves;
         }
@@ -665,8 +666,10 @@ public abstract class ChessGamePiece {
      * @param board the game board to check on
      * @return ArrayList<GamePiece> the list of attackers
      */
+
     public List<ChessGamePiece> getCurrentAttackers(ChessGameBoard board) {
         List<ChessGamePiece> attackers = new ArrayList<>();
+
         int enemyColor = (this.getColorOfPiece() == ChessGamePiece.BLACK)
                 ? ChessGamePiece.WHITE
                 : ChessGamePiece.BLACK;
