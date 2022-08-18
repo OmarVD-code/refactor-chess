@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.ImageIcon;
 // -------------------------------------------------------------------------
 /**
@@ -365,7 +367,7 @@ public abstract class ChessGamePiece{
             if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
                 moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
             }
-            
+
             return moves;
         }
 
@@ -699,8 +701,8 @@ public abstract class ChessGamePiece{
      * @param board the game board to check on
      * @return ArrayList<GamePiece> the list of attackers
      */
-    public ArrayList<ChessGamePiece> getCurrentAttackers( ChessGameBoard board ){
-        ArrayList<ChessGamePiece> attackers = new ArrayList<ChessGamePiece>();
+    public List<ChessGamePiece> getCurrentAttackers( ChessGameBoard board ){
+        List<ChessGamePiece> attackers = new ArrayList<>();
         int enemyColor =
             ( this.getColorOfPiece() == ChessGamePiece.BLACK )
                 ? ChessGamePiece.WHITE
