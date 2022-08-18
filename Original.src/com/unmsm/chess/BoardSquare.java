@@ -1,3 +1,4 @@
+package com.unmsm.chess;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 // -------------------------------------------------------------------------

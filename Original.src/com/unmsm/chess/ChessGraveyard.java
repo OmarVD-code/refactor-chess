@@ -1,3 +1,4 @@
+package com.unmsm.chess;
 import java.awt.GridLayout;
 import javax.swing.*;
 // -------------------------------------------------------------------------

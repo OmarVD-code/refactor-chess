@@ -1,3 +1,4 @@
+package com.unmsm.chess;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -55,7 +56,7 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
@@ -87,7 +88,7 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.BLACK, WHITE, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
@@ -131,20 +132,21 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateSouthMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceRow + 1; i < 8 && count < numMoves; i++ ){
+                boolean br = true;
                 if ( ( board.getCell( i, pieceColumn ).getPieceOnSquare()
                     == null || isEnemy( board, i, pieceColumn ) ) ){
+                    br = false;
                     moves.add( i + "," + pieceColumn );
                     count++;
                     if ( isEnemy( board, i, pieceColumn ) ){
-                        break;
+                        br=true;
                     }
                 }
-                else
-                {
+                if(br){
                     break;
                 }
             }
@@ -165,20 +167,21 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateNorthMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceRow - 1; i >= 0 && count < numMoves; i-- ){
+                boolean br =true;
                 if ( ( board.getCell( i, pieceColumn ).getPieceOnSquare()
                     == null || isEnemy( board, i, pieceColumn ) ) ){
+                    br=false;
                     moves.add( i + "," + pieceColumn );
                     count++;
                     if ( isEnemy( board, i, pieceColumn ) ){
-                        break;
+                        br=true;
                     }
                 }
-                else
-                {
+                if(br){
                     break;
                 }
             }
@@ -199,20 +202,21 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceColumn + 1; i < 8 && count < numMoves; i++ ){
+                boolean br = true;
                 if ( ( board.getCell( pieceRow, i ).getPieceOnSquare()
                     == null || isEnemy( board, pieceRow, i ) ) ){
+                    br = false;
                     moves.add( pieceRow + "," + i );
                     count++;
                     if ( isEnemy( board, pieceRow, i ) ){
-                        break;
+                        br = true;
                     }
                 }
-                else
-                {
+                if(br){
                     break;
                 }
             }
@@ -233,20 +237,21 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceColumn - 1; i >= 0 && count < numMoves; i-- ){
+                boolean br = true;
                 if ( ( board.getCell(pieceRow, i ).getPieceOnSquare()
                     == null || isEnemy( board, pieceRow, i ) ) ){
+                    br = false;
                     moves.add( pieceRow + "," + i );
                     count++;
                     if ( isEnemy( board, pieceRow, i ) ){
-                        break;
+                        br=true;
                     }
                 }
-                else
-                {
+                if(br){
                     break;
                 }
             }
@@ -267,23 +272,23 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateNorthWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
+                boolean br = true;
                 if ( isOnScreen( pieceRow - i, pieceColumn - i )
                     && ( board.getCell( pieceRow - i,
                         pieceColumn - i ).getPieceOnSquare() == null ) ){
+                    br=false;
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn - i ) );
                     count++;
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn - i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn - i ) );
                     count++;
-                    break;
                 }
-                else
-                {
+                if(br){
                     break;
                 }
             }
@@ -304,23 +309,23 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateNorthEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
+                boolean br = true;
                 if ( isOnScreen( pieceRow - i, pieceColumn + i )
                     && ( board.getCell( pieceRow - i,
                         pieceColumn + i).getPieceOnSquare() == null ) ){
+                    br = false;
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
                     count++;
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn + i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
                     count++;
-                    break;
                 }
-                else
-                {
+                if(br){
                     break;
                 }
             }
@@ -341,25 +346,25 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateSouthWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
+                boolean br = true;
                 if ( isOnScreen( pieceRow + i, pieceColumn - i )
                     && ( board.getCell( pieceRow + i,
                         pieceColumn - i ).getPieceOnSquare() == null ) ){
+                    br = false;
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
                     count++;
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
                     count++;
-                    break;
                 }
-                else
-                {
+                if(br){
                     break;
-                }
+                } 
             }
         }
         return moves;
