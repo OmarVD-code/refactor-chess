@@ -118,10 +118,7 @@ public class ChessGameEngine{
         else
         // white player
         {
-            if ( currentPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
-                return true;
-            }
-            return false;
+            return currentPiece.getColorOfPiece() == ChessGamePiece.WHITE; 
         }
     }
     /**
