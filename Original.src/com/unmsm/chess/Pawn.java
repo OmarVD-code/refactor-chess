@@ -92,10 +92,7 @@ public class Pawn
                 {
                     break;
                 }
-                currRow =
-                    ( getColorOfPiece() == ChessGamePiece.WHITE )
-                        ? ( currRow - 1 )
-                        : ( currRow + 1 );
+                currRow =( getColorOfPiece() == ChessGamePiece.WHITE ) ? ( currRow - 1 ) : ( currRow + 1 );
                 count++;
             }
             // check for enemy capture points
