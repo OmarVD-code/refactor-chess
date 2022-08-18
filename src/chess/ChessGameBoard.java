@@ -19,7 +19,7 @@ import java.awt.GridLayout;
  */
 public class ChessGameBoard extends JPanel {
     private BoardSquare[][] chessCells;
-    private BoardListener listener;
+    private BoardListener listener; // NOSONAR
 
     // ----------------------------------------------------------
     /**
@@ -82,8 +82,8 @@ public class ChessGameBoard extends JPanel {
      *
      * @return ArrayList<GamePiece> the pieces
      */
-    public ArrayList<ChessGamePiece> getAllWhitePieces() {
-        ArrayList<ChessGamePiece> whitePieces = new ArrayList<ChessGamePiece>();
+    public ArrayList<ChessGamePiece> getAllWhitePieces() { // NOSONAR
+        ArrayList<ChessGamePiece> whitePieces = new ArrayList<ChessGamePiece>(); // NOSONAR
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (chessCells[i][j].getPieceOnSquare() != null
@@ -101,8 +101,8 @@ public class ChessGameBoard extends JPanel {
      *
      * @return ArrayList<GamePiece> the pieces
      */
-    public ArrayList<ChessGamePiece> getAllBlackPieces() {
-        ArrayList<ChessGamePiece> blackPieces = new ArrayList<ChessGamePiece>();
+    public ArrayList<ChessGamePiece> getAllBlackPieces() { // NOSONAR
+        ArrayList<ChessGamePiece> blackPieces = new ArrayList<ChessGamePiece>(); // NOSONAR
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (chessCells[i][j].getPieceOnSquare() != null

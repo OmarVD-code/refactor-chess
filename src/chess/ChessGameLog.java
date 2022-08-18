@@ -25,8 +25,8 @@ public class ChessGameLog
     public ChessGameLog() {
         super(
                 new JTextArea("", 5, 30),
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, // NOSONAR
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS); // NOSONAR
         textArea = ((JTextArea) this.getViewport().getView());
     }
 
