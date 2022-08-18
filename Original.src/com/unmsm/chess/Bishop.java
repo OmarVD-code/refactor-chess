@@ -1,5 +1,3 @@
-
-// package chess;
 package com.unmsm.chess;
 
 import java.util.ArrayList;
@@ -47,7 +45,7 @@ public class Bishop extends ChessGamePiece {
         ArrayList<String> northWestMoves = calculateNorthWestMoves(board, 8);
         ArrayList<String> southEastMoves = calculateSouthEastMoves(board, 8);
         ArrayList<String> southWestMoves = calculateSouthWestMoves(board, 8);
-        ArrayList<String> allMoves = new ArrayList<>();
+        ArrayList<String> allMoves = new ArrayList<String>();
         allMoves.addAll(northEastMoves);
         allMoves.addAll(northWestMoves);
         allMoves.addAll(southEastMoves);
@@ -63,9 +61,9 @@ public class Bishop extends ChessGamePiece {
     @Override
     public ImageIcon createImageByPieceType() {
         resultado = getColorOfPiece() == ChessGamePiece.WHITE ? new ImageIcon(
-                getClass().getResource("/chessImages/WhiteBishop.gif"))
+                getClass().getResource("chessImages/WhiteBishop.gif"))
                 : new ImageIcon(
-                        getClass().getResource("/chessImages/BlackBishop.gif"));
+                        getClass().getResource("chessImages/BlackBishop.gif"));
         return resultado;
     }
 }

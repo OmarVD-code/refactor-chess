@@ -1,4 +1,4 @@
-// package chess;
+package com.unmsm.chess;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -139,14 +139,20 @@ public abstract class ChessGamePiece {
     protected ArrayList<String> calculateSouthMoves(
             ChessGameBoard board,
             int numMoves) {
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if (isPieceOnScreen()) {
             for (int i = pieceRow + 1; i < 8 && count < numMoves; i++) {
+                boolean br = true;
                 if ((board.getCell(i, pieceColumn).getPieceOnSquare() == null || isEnemy(board, i, pieceColumn))) {
+                    br = false;
                     moves.add(i + "," + pieceColumn);
                     count++;
-                } else {
+                    if (isEnemy(board, i, pieceColumn)) {
+                        br = true;
+                    }
+                }
+                if (br) {
                     break;
                 }
             }
@@ -168,14 +174,20 @@ public abstract class ChessGamePiece {
     protected ArrayList<String> calculateNorthMoves(
             ChessGameBoard board,
             int numMoves) {
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if (isPieceOnScreen()) {
             for (int i = pieceRow - 1; i >= 0 && count < numMoves; i--) {
+                boolean br = true;
                 if ((board.getCell(i, pieceColumn).getPieceOnSquare() == null || isEnemy(board, i, pieceColumn))) {
+                    br = false;
                     moves.add(i + "," + pieceColumn);
                     count++;
-                } else {
+                    if (isEnemy(board, i, pieceColumn)) {
+                        br = true;
+                    }
+                }
+                if (br) {
                     break;
                 }
             }
@@ -197,14 +209,20 @@ public abstract class ChessGamePiece {
     protected ArrayList<String> calculateEastMoves(
             ChessGameBoard board,
             int numMoves) {
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if (isPieceOnScreen()) {
             for (int i = pieceColumn + 1; i < 8 && count < numMoves; i++) {
+                boolean br = true;
                 if ((board.getCell(pieceRow, i).getPieceOnSquare() == null || isEnemy(board, pieceRow, i))) {
+                    br = false;
                     moves.add(pieceRow + "," + i);
                     count++;
-                } else {
+                    if (isEnemy(board, pieceRow, i)) {
+                        br = true;
+                    }
+                }
+                if (br) {
                     break;
                 }
             }
@@ -226,14 +244,20 @@ public abstract class ChessGamePiece {
     protected ArrayList<String> calculateWestMoves(
             ChessGameBoard board,
             int numMoves) {
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
         if (isPieceOnScreen()) {
             for (int i = pieceColumn - 1; i >= 0 && count < numMoves; i--) {
+                boolean br = true;
                 if ((board.getCell(pieceRow, i).getPieceOnSquare() == null || isEnemy(board, pieceRow, i))) {
+                    br = false;
                     moves.add(pieceRow + "," + i);
                     count++;
-                } else {
+                    if (isEnemy(board, pieceRow, i)) {
+                        br = true;
+                    }
+                }
+                if (br) {
                     break;
                 }
             }
@@ -352,6 +376,7 @@ public abstract class ChessGamePiece {
     }
 
     // FINAL MODIFICADO
+
     /**
      * Creates the ImageIcon by the color of the piece.
      *
@@ -390,7 +415,6 @@ public abstract class ChessGamePiece {
      *            the column to check
      * @return boolean true if the location is valid, false if not
      */
-
     public boolean isOnScreen(int row, int col) {
         return row >= 0 && row <= 7 && col >= 0 && col <= 7;
     }
