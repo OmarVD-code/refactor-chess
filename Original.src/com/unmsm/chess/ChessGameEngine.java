@@ -120,18 +120,11 @@ public class ChessGameEngine {
     private boolean selectedPieceIsValid() {
         if (currentPiece != null) // user tried to select an empty square
         {
-            if (currentPlayer == 2) // black player
-            {
-                if (currentPiece.getColorOfPiece() == ChessGamePiece.BLACK) {
-                    return true;
-                }
-            } else
-            // white player
-            {
-                if (currentPiece.getColorOfPiece() == ChessGamePiece.WHITE) {
-                    return true;
-                }
-            }
+            return currentPiece.getColorOfPiece() == ChessGamePiece.BLACK;
+        } else
+        // white player
+        {
+            return currentPiece.getColorOfPiece() == ChessGamePiece.WHITE;
         }
         return false;
     }

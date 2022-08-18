@@ -92,32 +92,33 @@ public class Pawn
                 {
                     break;
                 }
-                currRow =
-                    ( getColorOfPiece() == ChessGamePiece.WHITE )
-                        ? ( currRow - 1 )
-                        : ( currRow + 1 );
+                currRow =( getColorOfPiece() == ChessGamePiece.WHITE ) ? ( currRow - 1 ) : ( currRow + 1 );
                 count++;
             }
             // check for enemy capture points
-            if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-                if ( isEnemy( board, pieceRow - 1, pieceColumn - 1 ) ){
-                    moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn - 1 ) );
-                }
-                if ( isEnemy( board, pieceRow - 1, pieceColumn + 1 ) ){
-                    moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn + 1 ) );
-                }
-            }
-            else
-            {
-                if ( isEnemy( board, pieceRow + 1, pieceColumn - 1 ) ){
-                    moves.add( ( pieceRow + 1 ) + "," + ( pieceColumn - 1 ) );
-                }
-                if ( isEnemy( board, pieceRow + 1, pieceColumn + 1 ) ){
-                    moves.add( ( pieceRow + 1 ) + "," + ( pieceColumn + 1 ) );
-                }
-            }
+            checkEnemyCapturePoints(board, moves);
         }
         return moves;
+    }
+
+    protected void checkEnemyCapturePoints(ChessGameBoard board, ArrayList<String> moves){
+        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
+            if ( isEnemy( board, pieceRow - 1, pieceColumn - 1 ) ){
+                moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn - 1 ) );
+            }
+            if ( isEnemy( board, pieceRow - 1, pieceColumn + 1 ) ){
+                moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn + 1 ) );
+            }
+        }
+        else
+        {
+            if ( isEnemy( board, pieceRow + 1, pieceColumn - 1 ) ){
+                moves.add( ( pieceRow + 1 ) + "," + ( pieceColumn - 1 ) );
+            }
+            if ( isEnemy( board, pieceRow + 1, pieceColumn + 1 ) ){
+                moves.add( ( pieceRow + 1 ) + "," + ( pieceColumn + 1 ) );
+            }
+        }
     }
     /**
      * Creates an icon for this piece depending on the piece's color.
