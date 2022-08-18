@@ -1,4 +1,7 @@
+
 // package chess;
+
+package com.unmsm.chess;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;

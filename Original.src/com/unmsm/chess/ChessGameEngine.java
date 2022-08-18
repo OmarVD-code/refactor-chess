@@ -1,8 +1,12 @@
+
 // package chess;
+
+package com.unmsm.chess;
 
 import java.util.ArrayList;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+
 import java.awt.event.MouseEvent;
 
 // -------------------------------------------------------------------------
