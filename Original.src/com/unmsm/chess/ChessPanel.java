@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 public class ChessPanel
     extends JPanel{
-    private ChessMenuBar    menuBar;
+    
     private ChessGameBoard  gameBoard;
     private ChessGameLog    gameLog;
     private ChessGraveyard  playerOneGraveyard;
@@ -23,6 +23,8 @@ public class ChessPanel
      * Create a new ChessPanel object.
      */
     public ChessPanel(){
+        final ChessMenuBar    menuBar;
+
         this.setLayout( new BorderLayout() );
         menuBar = new ChessMenuBar();
         gameBoard = new ChessGameBoard();
