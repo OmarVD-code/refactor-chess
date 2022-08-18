@@ -113,10 +113,7 @@ public class ChessGameEngine{
         }
         if ( currentPlayer == 2 ) // black player
         {
-            if ( currentPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
-                return true;
-            }
-            return false;
+            return currentPiece.getColorOfPiece() == ChessGamePiece.BLACK;
         }
         else
         // white player
