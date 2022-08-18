@@ -1,4 +1,6 @@
+package com.unmsm.chess;
 import javax.swing.ImageIcon;
+
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
@@ -45,7 +47,7 @@ public class King
         ArrayList<String> southMoves = calculateSouthMoves( board, 1 );
         ArrayList<String> eastMoves = calculateEastMoves( board, 1 );
         ArrayList<String> westMoves = calculateWestMoves( board, 1 );
-        ArrayList<String> allMoves = new ArrayList<String>();
+        ArrayList<String> allMoves = new ArrayList<>();
         allMoves.addAll( northEastMoves );
         allMoves.addAll( northWestMoves );
         allMoves.addAll( southWestMoves );
