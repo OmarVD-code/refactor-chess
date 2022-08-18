@@ -359,10 +359,14 @@ public abstract class ChessGamePiece{
             ) {
                 moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
                 count++;
-            } else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
+                continue;
+            } 
+            
+            if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
                 moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                return moves;
-            } else return moves;
+            }
+            
+            return moves;
         }
 
         return moves;
@@ -395,14 +399,14 @@ public abstract class ChessGamePiece{
                     pieceColumn + i ).getPieceOnSquare() == null ) ){
                 moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
                 count++;
+                continue;
             }
-            else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
-                moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                return moves;
+
+            if (isEnemy(board, pieceRow + i, pieceColumn + i)){
+                moves.add((pieceRow + i) + "," + (pieceColumn + i));
             }
-            else {
-                return moves;
-            }
+
+            return moves;
         }
 
         return moves;
