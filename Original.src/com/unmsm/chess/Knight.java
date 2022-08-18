@@ -1,4 +1,6 @@
+package com.unmsm.chess;
 import javax.swing.ImageIcon;
+
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**

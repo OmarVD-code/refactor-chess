@@ -1,3 +1,4 @@
+package com.unmsm.chess;
 import java.awt.Component;
 import java.awt.event.*;
 import javax.swing.*;
