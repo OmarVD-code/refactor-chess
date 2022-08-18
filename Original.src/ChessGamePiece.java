@@ -343,26 +343,30 @@ public abstract class ChessGamePiece{
         int numMoves ){
         ArrayList<String> moves = new ArrayList<String>();
         int count = 0;
-        if ( isPieceOnScreen() ){
-            for ( int i = 1; i < 8 && count < numMoves; i++ ){
-                if ( isOnScreen( pieceRow + i, pieceColumn - i )
-                    && ( board.getCell( pieceRow + i,
-                        pieceColumn - i ).getPieceOnSquare() == null ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                }
-                else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
-                    break;
-                }
-            }
+
+        if (!isPieceOnScreen()) {
+            return moves;
         }
+
+        for (int i = 1; i < 8 && count < numMoves; i++){
+            if ( isOnScreen(pieceRow + i, pieceColumn - i)
+                && (
+                    board.getCell(
+                        pieceRow + i,
+                        pieceColumn - i
+                    ).getPieceOnSquare() == null
+                )
+            ) {
+                moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
+                count++;
+            } else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
+                moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
+                return moves;
+            } else return moves;
+        }
+
         return moves;
+        
     }
     // ----------------------------------------------------------
     /**
@@ -378,27 +382,29 @@ public abstract class ChessGamePiece{
     protected ArrayList<String> calculateSouthEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
-        if ( isPieceOnScreen() ){
-            for ( int i = 1; i < 8 && count < numMoves; i++ ){
-                if ( isOnScreen( pieceRow + i, pieceColumn + i )
-                    && ( board.getCell( pieceRow + i,
-                        pieceColumn + i ).getPieceOnSquare() == null ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
-                }
-                else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
-                    break;
-                }
-                else
-                {
-                    break;
-                }
+
+        if (!isPieceOnScreen()) {
+            return moves;
+        }
+
+        for ( int i = 1; i < 8 && count < numMoves; i++ ){
+            if ( isOnScreen(pieceRow + i, pieceColumn + i)
+                && ( board.getCell( pieceRow + i,
+                    pieceColumn + i ).getPieceOnSquare() == null ) ){
+                moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
+                count++;
+            }
+            else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
+                moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
+                return moves;
+            }
+            else {
+                return moves;
             }
         }
+
         return moves;
     }
     /**
@@ -437,13 +443,7 @@ public abstract class ChessGamePiece{
      * @return boolean true if the location is valid, false if not
      */
     public boolean isOnScreen( int row, int col ){
-        if ( row >= 0 && row <= 7 && col >= 0 && col <= 7 ){
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return row >= 0 && row <= 7 && col >= 0 && col <= 7;
     }
     // ----------------------------------------------------------
     /**
@@ -684,15 +684,8 @@ public abstract class ChessGamePiece{
                 return false;
             }
         }
-        else
-        {
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        else {
+            return enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE;
         }
     }
     // ----------------------------------------------------------
